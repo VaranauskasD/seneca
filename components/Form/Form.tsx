@@ -1,22 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Radio } from '../Radio'
+import { RadioGroup } from '../RadioGroup'
 
 interface FormProps {
   question: string
-  answers: string[][]
+  optionGroups: string[][]
 }
 
 const StyledQuestion = styled.span``
 
 const StyledForm = styled.form``
-
-const Options = (options: string[], key: number) => {
-  return options.map((option) => {
-    return <Radio id={`option+${key}`} label={option} name={`${key}`} />
-  })
-}
 
 export const Form = (props: FormProps) => {
   return (
@@ -24,13 +18,10 @@ export const Form = (props: FormProps) => {
       <StyledForm>
         <StyledQuestion>
           {props.question} <br />
+          {props.optionGroups.map((optionGroup, key) => (
+            <RadioGroup id={key} options={optionGroup} />
+          ))}
         </StyledQuestion>
-        {props.answers.map((answers, key) => (
-          <React.Fragment>
-            {Options(answers, key)}
-            <br />
-          </React.Fragment>
-        ))}
       </StyledForm>
       The answer is {true ? `correct` : `incorrect`}
     </React.Fragment>

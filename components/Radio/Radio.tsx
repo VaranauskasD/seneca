@@ -16,9 +16,11 @@ export const Radio = (props: RadioProps) => {
   return (
     <React.Fragment>
       <StyledLabel>
-        {props.label}
         <StyledInput id={props.id} type="radio" name={props.name}></StyledInput>
+        {props.label}
       </StyledLabel>
     </React.Fragment>
   )
 }
+
+export default Radio
