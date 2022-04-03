@@ -13,13 +13,20 @@ const StyledInput = styled.input``
 const StyledLabel = styled.label``
 
 export const Radio = (props: RadioProps) => {
+  const onRadioCheck = () => {
+    console.log('checked' + props.id)
+  }
+
   return (
-    <React.Fragment>
-      <StyledLabel>
-        <StyledInput id={props.id} type="radio" name={props.name}></StyledInput>
-        {props.label}
-      </StyledLabel>
-    </React.Fragment>
+    <StyledLabel>
+      <StyledInput
+        id={props.id}
+        type="radio"
+        name={props.name}
+        onChange={() => onRadioCheck()}
+      ></StyledInput>
+      {props.label}
+    </StyledLabel>
   )
 }
 

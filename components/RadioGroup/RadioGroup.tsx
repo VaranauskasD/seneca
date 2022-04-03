@@ -15,13 +15,12 @@ export const RadioGroup = (props: RadioGroupProps) => {
     <React.Fragment>
       <StyledRadioGroup>
         {props.options.map((option, key) => (
-          <React.Fragment>
-            <Radio
-              id={`option+${props.id}+${key}`}
-              label={option}
-              name={`option+${props.id}`}
-            />
-          </React.Fragment>
+          <Radio
+            key={`option-${props.id}-${key}`}
+            id={`option-${props.id}-${key}`}
+            label={option}
+            name={`option-${props.id}`}
+          />
         ))}
       </StyledRadioGroup>
       <br />

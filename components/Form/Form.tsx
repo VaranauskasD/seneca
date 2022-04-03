@@ -19,7 +19,11 @@ export const Form = (props: FormProps) => {
         <StyledQuestion>
           {props.question} <br />
           {props.optionGroups.map((optionGroup, key) => (
-            <RadioGroup id={key} options={optionGroup} />
+            <RadioGroup
+              key={`optionGroup-${key}`}
+              id={key}
+              options={optionGroup}
+            />
           ))}
         </StyledQuestion>
       </StyledForm>

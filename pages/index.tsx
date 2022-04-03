@@ -36,7 +36,7 @@ const randomiseOptions = (options: string[]) => {
 }
 
 const Home: NextPage = () => {
-  FormProps.optionGroups.forEach((optionGroup) => randomiseOptions(optionGroup))
+  //FormProps.optionGroups.forEach((optionGroup) => randomiseOptions(optionGroup))
 
   return (
     <React.Fragment>
