@@ -13,7 +13,16 @@ interface RadioGroupProps {
   ) => void
 }
 
-const StyledRadioGroup = styled.div``
+const StyledRadioGroup = styled.div`
+  border: 2px solid #f9d29f;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+`
 
 export const RadioGroup = (props: RadioGroupProps) => {
   return (

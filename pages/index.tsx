@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+
 import { Form } from '../components'
 
 const FormData = {
@@ -37,6 +39,21 @@ const randomiseOptions = (options: { option: string; current?: boolean }[]) => {
     options[randomIndex] = temp
   }
 }
+
+const StyledContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: ${(props) => props.theme.primary};
+  background: rgb(238, 109, 46);
+  background: linear-gradient(
+    0deg,
+    rgba(238, 109, 46, 1) 50%,
+    rgba(249, 210, 159, 1) 100%
+  );
+`
 
 const Home: NextPage = () => {
   const [optionGroupsState, setOptionGroupsState] = useState<boolean[]>(
@@ -75,12 +92,14 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Form
-          question={FormData.question}
-          optionGroups={FormData.optionGroups}
-          handleOption={handleOption}
-          isAnswered={isAnswered}
-        ></Form>
+        <StyledContent>
+          <Form
+            question={FormData.question}
+            optionGroups={FormData.optionGroups}
+            handleOption={handleOption}
+            isAnswered={isAnswered}
+          />
+        </StyledContent>
       </main>
     </React.Fragment>
   )

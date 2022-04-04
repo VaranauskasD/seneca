@@ -14,9 +14,13 @@ interface FormProps {
   isAnswered: boolean
 }
 
-const StyledQuestion = styled.span``
+const StyledQuestion = styled.h1``
 
-const StyledForm = styled.form``
+const StyledAnswer = styled.h2``
+
+const StyledForm = styled.form`
+  text-align: center;
+`
 
 export const Form = (props: FormProps) => {
   return (
@@ -24,17 +28,19 @@ export const Form = (props: FormProps) => {
       <StyledForm>
         <StyledQuestion>
           {props.question} <br />
-          {props.optionGroups.map((optionGroup, key) => (
-            <RadioGroup
-              key={`optionGroup-${key}`}
-              id={key}
-              options={optionGroup}
-              handleOption={props.handleOption}
-            />
-          ))}
         </StyledQuestion>
+        {props.optionGroups.map((optionGroup, key) => (
+          <RadioGroup
+            key={`optionGroup-${key}`}
+            id={key}
+            options={optionGroup}
+            handleOption={props.handleOption}
+          />
+        ))}
       </StyledForm>
-      The answer is {props.isAnswered ? `correct` : `incorrect`}
+      <StyledAnswer>
+        The answer is {props.isAnswered ? `correct` : `incorrect`}
+      </StyledAnswer>
     </React.Fragment>
   )
 }
