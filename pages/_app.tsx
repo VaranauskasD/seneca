@@ -8,6 +8,11 @@ import { ViewportProvider } from '../providers'
 const theme = {
   primary: '#ffffff',
   secondary: '#000000',
+  breakpoints: {
+    xs: 320,
+    sm: 692,
+    md: 900,
+  },
 }
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

@@ -19,23 +19,29 @@ const StyledQuestion = styled.h1``
 const StyledAnswer = styled.h2``
 
 const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 `
+
+const RadioWrapper = styled.div``
 
 export const Form = (props: FormProps) => {
   return (
     <React.Fragment>
       <StyledForm>
-        <StyledQuestion>
-          {props.question} <br />
-        </StyledQuestion>
+        <StyledQuestion>{props.question}</StyledQuestion>
         {props.optionGroups.map((optionGroup, key) => (
-          <RadioGroup
-            key={`optionGroup-${key}`}
-            id={key}
-            options={optionGroup}
-            handleOption={props.handleOption}
-          />
+          <RadioWrapper>
+            <RadioGroup
+              key={`optionGroup-${key}`}
+              id={key}
+              options={optionGroup}
+              handleOption={props.handleOption}
+            />
+          </RadioWrapper>
         ))}
       </StyledForm>
       <StyledAnswer>

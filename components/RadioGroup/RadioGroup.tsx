@@ -13,21 +13,26 @@ interface RadioGroupProps {
   ) => void
 }
 
-const StyledRadioGroup = styled.div`
+const StyledRadioGroup = styled.div<{ $quantity: number }>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   border: 2px solid #f9d29f;
-  padding: 10px 20px;
+  margin: 4px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
   border-radius: 16px;
+
+  @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
+    flex-direction: ${(props) => (props.$quantity > 2 ? 'column' : 'row')};
+  }
 `
 
 export const RadioGroup = (props: RadioGroupProps) => {
   return (
     <React.Fragment>
-      <StyledRadioGroup>
+      <StyledRadioGroup $quantity={props.options.length}>
         {props.options.map((option, key) => (
           <Radio
             key={`option-${props.id}-${key}`}
@@ -40,7 +45,6 @@ export const RadioGroup = (props: RadioGroupProps) => {
           />
         ))}
       </StyledRadioGroup>
-      <br />
     </React.Fragment>
   )
 }
