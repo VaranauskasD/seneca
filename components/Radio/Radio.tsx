@@ -3,9 +3,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface RadioProps {
-  id: string
+  id: number
+  optionGroupId: number
   label: string
   name: string
+  correct: boolean
+  handleOption: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    optionGroupId: number,
+    correct: boolean
+  ) => void
 }
 
 const StyledInput = styled.input``
@@ -13,18 +20,16 @@ const StyledInput = styled.input``
 const StyledLabel = styled.label``
 
 export const Radio = (props: RadioProps) => {
-  const onRadioCheck = () => {
-    console.log('checked' + props.id)
-  }
-
   return (
     <StyledLabel>
       <StyledInput
-        id={props.id}
+        id={`option-${props.optionGroupId}-${props.id}`}
         type="radio"
         name={props.name}
-        onChange={() => onRadioCheck()}
-      ></StyledInput>
+        onChange={(event) =>
+          props.handleOption(event, props.optionGroupId, props.correct)
+        }
+      />
       {props.label}
     </StyledLabel>
   )

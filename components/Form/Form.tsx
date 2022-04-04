@@ -5,7 +5,13 @@ import { RadioGroup } from '../RadioGroup'
 
 interface FormProps {
   question: string
-  optionGroups: string[][]
+  optionGroups: { option: string; correct?: boolean }[][]
+  handleOption: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    optionGroupId: number,
+    correct: boolean
+  ) => void
+  isAnswered: boolean
 }
 
 const StyledQuestion = styled.span``
@@ -23,11 +29,12 @@ export const Form = (props: FormProps) => {
               key={`optionGroup-${key}`}
               id={key}
               options={optionGroup}
+              handleOption={props.handleOption}
             />
           ))}
         </StyledQuestion>
       </StyledForm>
-      The answer is {true ? `correct` : `incorrect`}
+      The answer is {props.isAnswered ? `correct` : `incorrect`}
     </React.Fragment>
   )
 }

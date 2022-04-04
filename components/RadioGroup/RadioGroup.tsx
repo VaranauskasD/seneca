@@ -5,7 +5,12 @@ import { Radio } from '../Radio'
 
 interface RadioGroupProps {
   id: number
-  options: string[]
+  options: { option: string; correct?: boolean }[]
+  handleOption: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    optionGroupId: number,
+    correct: boolean
+  ) => void
 }
 
 const StyledRadioGroup = styled.div``
@@ -17,9 +22,12 @@ export const RadioGroup = (props: RadioGroupProps) => {
         {props.options.map((option, key) => (
           <Radio
             key={`option-${props.id}-${key}`}
-            id={`option-${props.id}-${key}`}
-            label={option}
+            id={key}
+            optionGroupId={props.id}
+            label={option.option}
             name={`option-${props.id}`}
+            correct={option.correct || false}
+            handleOption={props.handleOption}
           />
         ))}
       </StyledRadioGroup>

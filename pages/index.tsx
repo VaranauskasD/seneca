@@ -1,25 +1,28 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form } from '../components'
 
-const FormProps = {
-  // question: 'Test Question',
-  // answers: [
-  //   ['Test answer 1', 'Test answer 2', 'Test answer 3'],
-  //   ['Test answer 4', 'Test answer 5'],
-  // ],
+const FormData = {
   question: 'An animal cell contains',
   optionGroups: [
-    ['Cell wall', 'Ribosomes'],
-    ['Cytoplasm', 'Chloroplast'],
-    ['Partially permeable membrane', 'Impermeable membrane'],
-    ['Cellulose', 'Mitochondria'],
+    [{ option: 'Cell wall', correct: true }, { option: 'Ribosomes' }],
+    [{ option: 'Cytoplasm', correct: true }, { option: 'Chloroplast' }],
+    [
+      { option: 'Partially permeable membrane', correct: true },
+      { option: 'Impermeable membrane' },
+    ],
+    [{ option: 'Cellulose' }, { option: 'Mitochondria', correct: true }],
+    [
+      { option: 'Cellulose' },
+      { option: 'Mitochondria', correct: true },
+      { option: 'Chroloplast' },
+    ],
   ],
 }
 
-const randomiseOptions = (options: string[]) => {
+const randomiseOptions = (options: { option: string; current?: boolean }[]) => {
   // Fisher-Yates
   for (
     let currentIndex = options.length - 1;
@@ -36,7 +39,32 @@ const randomiseOptions = (options: string[]) => {
 }
 
 const Home: NextPage = () => {
-  //FormProps.optionGroups.forEach((optionGroup) => randomiseOptions(optionGroup))
+  const [optionGroupsState, setOptionGroupsState] = useState<boolean[]>(
+    Array(FormData.optionGroups.length).fill(false)
+  )
+  const [isAnswered, setIsAnswered] = useState<boolean>(false)
+
+  const handleOption = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    optionGroupId: number,
+    correct: boolean
+  ) => {
+    const temp = optionGroupsState
+    temp[optionGroupId] = !!correct
+
+    let check = true
+    for (let optionState of temp) {
+      if (!optionState) {
+        check = false
+        break
+      }
+    }
+    setIsAnswered(check)
+    setOptionGroupsState(temp)
+  }
+
+  // FormData.optionGroups.forEach((optionGroup) =>
+  //   randomiseOptions(optionGroup)
 
   return (
     <React.Fragment>
@@ -47,7 +75,12 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Form {...FormProps}></Form>
+        <Form
+          question={FormData.question}
+          optionGroups={FormData.optionGroups}
+          handleOption={handleOption}
+          isAnswered={isAnswered}
+        ></Form>
       </main>
     </React.Fragment>
   )
