@@ -3,7 +3,7 @@ import React, { useState, Dispatch, SetStateAction, useEffect } from 'react'
 import styled from 'styled-components'
 // import { motion } from 'framer-motion'
 
-interface RadioProps {
+export interface RadioProps {
   id: number
   optionGroupId: number
   label: string

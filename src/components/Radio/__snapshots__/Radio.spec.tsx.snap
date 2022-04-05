@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ Sefou"
+  >
+    <label
+      class="sc-dkzDqf hdgGtK"
+    >
+      <input
+        class="sc-gsnTZi exMZOs"
+        id="option-0-0"
+        name="option-0"
+        type="radio"
+      />
+      Cell wall
+    </label>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroup renders correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-hKMtZM hVmtlr"
+  >
+    <div
+      class="sc-bczRLJ fNFKHi"
+    >
+      <label
+        class="sc-dkzDqf hdgGtK"
+      >
+        <input
+          checked=""
+          class="sc-gsnTZi exMZOs"
+          id="option-0-0"
+          name="option-0"
+          type="radio"
+        />
+        Cell wall
+      </label>
+    </div>
+    <div
+      class="sc-bczRLJ jNqizO"
+    >
+      <label
+        class="sc-dkzDqf hdgGtK"
+      >
+        <input
+          class="sc-gsnTZi exMZOs"
+          id="option-0-1"
+          name="option-0"
+          type="radio"
+        />
+        Ribosomes
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`RadioGroup renders correctly with three radio options 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-hKMtZM efbTlQ"
+  >
+    <div
+      class="sc-bczRLJ bDYwXX"
+    >
+      <label
+        class="sc-dkzDqf hdgGtK"
+      >
+        <input
+          checked=""
+          class="sc-gsnTZi exMZOs"
+          id="option-0-0"
+          name="option-0"
+          type="radio"
+        />
+        Cellulose
+      </label>
+    </div>
+    <div
+      class="sc-bczRLJ hXUtLi"
+    >
+      <label
+        class="sc-dkzDqf hdgGtK"
+      >
+        <input
+          class="sc-gsnTZi exMZOs"
+          id="option-0-1"
+          name="option-0"
+          type="radio"
+        />
+        Mitochondria
+      </label>
+    </div>
+    <div
+      class="sc-bczRLJ iGNBNP"
+    >
+      <label
+        class="sc-dkzDqf hdgGtK"
+      >
+        <input
+          class="sc-gsnTZi exMZOs"
+          id="option-0-2"
+          name="option-0"
+          type="radio"
+        />
+        Chroloplast
+      </label>
+    </div>
+  </div>
+</DocumentFragment>
+`;

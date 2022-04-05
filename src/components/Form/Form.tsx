@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { RadioGroup } from '../RadioGroup'
 
-interface FormProps {
+export interface FormProps {
   question: string
   optionGroups: { option: string; correct?: boolean }[][]
   handleOption: (optionGroupId: number, correct: boolean) => void

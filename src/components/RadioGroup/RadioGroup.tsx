@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { Radio } from '../Radio'
 
-interface RadioGroupProps {
+export interface RadioGroupProps {
   id: number
   options: { option: string; correct?: boolean }[]
   handleOption: (optionGroupId: number, correct: boolean) => void
