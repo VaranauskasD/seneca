@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { Radio } from '../Radio'
@@ -6,11 +6,7 @@ import { Radio } from '../Radio'
 interface RadioGroupProps {
   id: number
   options: { option: string; correct?: boolean }[]
-  handleOption: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    optionGroupId: number,
-    correct: boolean
-  ) => void
+  handleOption: (optionGroupId: number, correct: boolean) => void
   dynamicRatio: number
 }
 
@@ -49,6 +45,7 @@ const StyledRadioGroup = styled.div<{
 `
 
 export const RadioGroup = (props: RadioGroupProps) => {
+  // const random = Math.floor(Math.random() * props.options.length)
   const [selectedRadio, setSelectedRadio] = useState<number>(0)
 
   return (

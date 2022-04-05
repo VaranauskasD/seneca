@@ -6,11 +6,7 @@ import { RadioGroup } from '../RadioGroup'
 interface FormProps {
   question: string
   optionGroups: { option: string; correct?: boolean }[][]
-  handleOption: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    optionGroupId: number,
-    correct: boolean
-  ) => void
+  handleOption: (optionGroupId: number, correct: boolean) => void
   isAnswered: boolean
   dynamicRatio: number
 }

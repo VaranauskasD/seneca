@@ -92,11 +92,7 @@ const Home: NextPage = () => {
   const [isAnswered, setIsAnswered] = useState<boolean>(false)
   const [dynamicRatio, setDynamicRatio] = useState<number>(0)
 
-  const handleOption = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    optionGroupId: number,
-    correct: boolean
-  ) => {
+  const handleOption = (optionGroupId: number, correct: boolean) => {
     const temp = optionGroupsState
     temp[optionGroupId] = !!correct
 

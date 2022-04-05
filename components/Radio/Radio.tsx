@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, SetStateAction } from 'react'
+import React, { useState, Dispatch, SetStateAction, useEffect } from 'react'
 
 import styled from 'styled-components'
 // import { motion } from 'framer-motion'
@@ -11,11 +11,7 @@ interface RadioProps {
   correct: boolean
   checked: boolean
   handleCheck: Dispatch<SetStateAction<number>>
-  handleOption: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    optionGroupId: number,
-    correct: boolean
-  ) => void
+  handleOption: (optionGroupId: number, correct: boolean) => void
   dynamicRatio: number
   groupQuantity: number
 }
@@ -113,6 +109,13 @@ const StyledLabel = styled.label`
 `
 
 export const Radio = (props: RadioProps) => {
+  useEffect(() => {
+    if (props.checked) {
+      props.handleCheck(props.id)
+      props.handleOption(props.optionGroupId, props.correct)
+    }
+  }, [])
+
   return (
     <React.Fragment>
       <StyledRadio
@@ -129,7 +132,7 @@ export const Radio = (props: RadioProps) => {
             checked={props.checked}
             onChange={(event) => {
               props.handleCheck(props.id)
-              props.handleOption(event, props.optionGroupId, props.correct)
+              props.handleOption(props.optionGroupId, props.correct)
             }}
           />
           {props.label}
