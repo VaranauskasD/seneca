@@ -52,34 +52,32 @@ const StyledContent = styled.div<{ $dynamicRatio: number }>`
       0deg, 
       rgba(
         ${
-          props.theme.colors.dynamic.minStart.r +
-          props.theme.colors.dynamic.rangeStart.r * props.$dynamicRatio
+          props.theme.colors.dynamic.primary.minStart.r +
+          props.theme.colors.dynamic.primary.rangeStart.r * props.$dynamicRatio
         }, 
         ${
-          props.theme.colors.dynamic.minStart.g +
-          props.theme.colors.dynamic.rangeStart.g * props.$dynamicRatio
+          props.theme.colors.dynamic.primary.minStart.g +
+          props.theme.colors.dynamic.primary.rangeStart.g * props.$dynamicRatio
         }, 
         ${
-          props.theme.colors.dynamic.minStart.b +
-          props.theme.colors.dynamic.rangeStart.b * props.$dynamicRatio
-        }, 
-        ${props.theme.colors.dynamic.minStart.a}
+          props.theme.colors.dynamic.primary.minStart.b +
+          props.theme.colors.dynamic.primary.rangeStart.b * props.$dynamicRatio
+        }, 1
         ) 
         50%, 
       rgba(
         ${
-          props.theme.colors.dynamic.minEnd.r +
-          props.theme.colors.dynamic.rangeEnd.r * props.$dynamicRatio
+          props.theme.colors.dynamic.primary.minEnd.r +
+          props.theme.colors.dynamic.primary.rangeEnd.r * props.$dynamicRatio
         },
         ${
-          props.theme.colors.dynamic.minEnd.g +
-          props.theme.colors.dynamic.rangeEnd.g * props.$dynamicRatio
+          props.theme.colors.dynamic.primary.minEnd.g +
+          props.theme.colors.dynamic.primary.rangeEnd.g * props.$dynamicRatio
         }, 
         ${
-          props.theme.colors.dynamic.minEnd.b +
-          props.theme.colors.dynamic.rangeEnd.b * props.$dynamicRatio
-        }, 
-        ${props.theme.colors.dynamic.minEnd.a}
+          props.theme.colors.dynamic.primary.minEnd.b +
+          props.theme.colors.dynamic.primary.rangeEnd.b * props.$dynamicRatio
+        }, 1
         ) 
         100%
       )
@@ -133,6 +131,7 @@ const Home: NextPage = () => {
             optionGroups={FormData.optionGroups}
             handleOption={handleOption}
             isAnswered={isAnswered}
+            dynamicRatio={dynamicRatio}
           />
         </StyledContent>
       </main>

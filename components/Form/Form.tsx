@@ -12,6 +12,7 @@ interface FormProps {
     correct: boolean
   ) => void
   isAnswered: boolean
+  dynamicRatio: number
 }
 
 const StyledQuestion = styled.h1`
@@ -44,6 +45,7 @@ export const Form = (props: FormProps) => {
               id={key}
               options={optionGroup}
               handleOption={props.handleOption}
+              dynamicRatio={props.dynamicRatio}
             />
           </RadioWrapper>
         ))}

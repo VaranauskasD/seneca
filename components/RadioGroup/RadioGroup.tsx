@@ -11,6 +11,7 @@ interface RadioGroupProps {
     optionGroupId: number,
     correct: boolean
   ) => void
+  dynamicRatio: number
 }
 
 const StyledRadioGroup = styled.div<{ $quantity: number }>`
@@ -18,7 +19,7 @@ const StyledRadioGroup = styled.div<{ $quantity: number }>`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid #f9d29f;
+  border: 2px solid #ffffff;
   margin: 4px;
   text-align: center;
   text-decoration: none;
@@ -31,23 +32,27 @@ const StyledRadioGroup = styled.div<{ $quantity: number }>`
 
 export const RadioGroup = (props: RadioGroupProps) => {
   const [selectedRadio, setSelectedRadio] = useState<number>(0)
+  // console.log(selectedRadio)
 
   return (
     <React.Fragment>
       <StyledRadioGroup $quantity={props.options.length}>
-        {props.options.map((option, key) => (
-          <Radio
-            key={`option-${props.id}-${key}`}
-            id={key}
-            optionGroupId={props.id}
-            label={option.option}
-            name={`option-${props.id}`}
-            checked={key == selectedRadio}
-            correct={option.correct || false}
-            handleCheck={setSelectedRadio}
-            handleOption={props.handleOption}
-          />
-        ))}
+        {props.options.map((option, key) => {
+          return (
+            <Radio
+              key={`option-${props.id}-${key}`}
+              id={key}
+              optionGroupId={props.id}
+              label={option.option}
+              name={`option-${props.id}`}
+              checked={key === selectedRadio}
+              correct={option.correct || false}
+              handleCheck={setSelectedRadio}
+              handleOption={props.handleOption}
+              dynamicRatio={props.dynamicRatio}
+            />
+          )
+        })}
       </StyledRadioGroup>
     </React.Fragment>
   )

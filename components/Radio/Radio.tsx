@@ -15,18 +15,67 @@ interface RadioProps {
     optionGroupId: number,
     correct: boolean
   ) => void
+  dynamicRatio: number
 }
 
-const StyledRadio = styled.div<{ $selected: boolean }>`
+const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
   min-width: 288px;
   padding: 20px 8px;
   color: ${(props) =>
     props.$selected
-      ? `${props.theme.colors.secondary}`
+      ? `rgba(
+        ${
+          props.theme.colors.dynamic.text.start.r +
+          props.theme.colors.dynamic.text.range.r * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.text.start.g +
+          props.theme.colors.dynamic.text.range.g * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.text.start.b +
+          props.theme.colors.dynamic.text.range.b * props.$dynamicRatio
+        }, 
+        ) `
       : `${props.theme.colors.primary}`};
-  background: ${(props) => (props.$selected ? '#F8CAA3' : 'transparent')};
+  /* color: black; */
+  background: ${(props) => {
+    if (props.$selected) console.log(props.$selected)
+    return props.$selected
+      ? `rgb(
+        ${
+          props.theme.colors.dynamic.secondary.start.r +
+          props.theme.colors.dynamic.secondary.range.r * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.secondary.start.g +
+          props.theme.colors.dynamic.secondary.range.g * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.secondary.start.b +
+          props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
+        }
+        )`
+      : 'transparent'
+  }};
   border: 2px solid transparent;
-  border-color: ${(props) => (props.$selected ? '#F8CAA3' : 'transparent')};
+  border-color: ${(props) =>
+    props.$selected
+      ? `rgb(
+        ${
+          props.theme.colors.dynamic.secondary.start.r +
+          props.theme.colors.dynamic.secondary.range.r * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.secondary.start.g +
+          props.theme.colors.dynamic.secondary.range.g * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.secondary.start.b +
+          props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
+        }
+        )`
+      : 'transparent'};
   border-radius: 24px;
 
   @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
@@ -47,9 +96,9 @@ const StyledLabel = styled.label``
 
 export const Radio = (props: RadioProps) => {
   const [isChecked, setIsChecked] = useState<boolean>(false)
-
+  if (isChecked) console.log(isChecked)
   return (
-    <StyledRadio $selected={isChecked}>
+    <StyledRadio $selected={isChecked} $dynamicRatio={props.dynamicRatio}>
       <StyledLabel>
         <StyledInput
           id={`option-${props.optionGroupId}-${props.id}`}
