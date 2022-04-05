@@ -14,9 +14,13 @@ interface FormProps {
   isAnswered: boolean
 }
 
-const StyledQuestion = styled.h1``
+const StyledQuestion = styled.h1`
+  color: ${(props) => `${props.theme.colors.primary}`};
+`
 
-const StyledAnswer = styled.h2``
+const StyledAnswer = styled.h2`
+  color: ${(props) => `${props.theme.colors.primary}`};
+`
 
 const StyledForm = styled.form`
   display: flex;

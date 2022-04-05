@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, Dispatch, SetStateAction } from 'react'
 
 import styled from 'styled-components'
 
@@ -8,16 +8,26 @@ interface RadioProps {
   label: string
   name: string
   correct: boolean
+  checked: boolean
+  handleCheck: Dispatch<SetStateAction<number>>
   handleOption: (
     event: React.ChangeEvent<HTMLInputElement>,
     optionGroupId: number,
     correct: boolean
   ) => void
-  quantity: number
 }
 
-const StyledRadio = styled.div`
+const StyledRadio = styled.div<{ $selected: boolean }>`
   min-width: 288px;
+  padding: 20px 8px;
+  color: ${(props) =>
+    props.$selected
+      ? `${props.theme.colors.secondary}`
+      : `${props.theme.colors.primary}`};
+  background: ${(props) => (props.$selected ? '#F8CAA3' : 'transparent')};
+  border: 2px solid transparent;
+  border-color: ${(props) => (props.$selected ? '#F8CAA3' : 'transparent')};
+  border-radius: 24px;
 
   @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
     min-width: 330px;
@@ -27,21 +37,29 @@ const StyledRadio = styled.div`
   }
 `
 
-const StyledInput = styled.input``
+const StyledInput = styled.input`
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+`
 
 const StyledLabel = styled.label``
 
 export const Radio = (props: RadioProps) => {
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+
   return (
-    <StyledRadio>
+    <StyledRadio $selected={isChecked}>
       <StyledLabel>
         <StyledInput
           id={`option-${props.optionGroupId}-${props.id}`}
           type="radio"
           name={props.name}
-          onChange={(event) =>
+          checked={props.checked}
+          onChange={(event) => {
+            props.handleCheck(props.id)
             props.handleOption(event, props.optionGroupId, props.correct)
-          }
+          }}
         />
         {props.label}
       </StyledLabel>

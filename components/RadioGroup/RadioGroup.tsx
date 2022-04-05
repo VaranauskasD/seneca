@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { Radio } from '../Radio'
@@ -22,7 +22,7 @@ const StyledRadioGroup = styled.div<{ $quantity: number }>`
   margin: 4px;
   text-align: center;
   text-decoration: none;
-  border-radius: 16px;
+  border-radius: 24px;
 
   @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
     flex-direction: ${(props) => (props.$quantity > 2 ? 'column' : 'row')};
@@ -30,6 +30,8 @@ const StyledRadioGroup = styled.div<{ $quantity: number }>`
 `
 
 export const RadioGroup = (props: RadioGroupProps) => {
+  const [selectedRadio, setSelectedRadio] = useState<number>(0)
+
   return (
     <React.Fragment>
       <StyledRadioGroup $quantity={props.options.length}>
@@ -40,7 +42,9 @@ export const RadioGroup = (props: RadioGroupProps) => {
             optionGroupId={props.id}
             label={option.option}
             name={`option-${props.id}`}
+            checked={key == selectedRadio}
             correct={option.correct || false}
+            handleCheck={setSelectedRadio}
             handleOption={props.handleOption}
           />
         ))}

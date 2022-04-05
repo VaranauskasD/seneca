@@ -40,19 +40,50 @@ const randomiseOptions = (options: { option: string; current?: boolean }[]) => {
   }
 }
 
-const StyledContent = styled.div`
+const StyledContent = styled.div<{ $dynamicRatio: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   color: ${(props) => props.theme.primary};
-  background: rgb(238, 109, 46);
-  background: linear-gradient(
-    0deg,
-    rgba(238, 109, 46, 1) 50%,
-    rgba(249, 210, 159, 1) 100%
-  );
+  background: ${(props) =>
+    `linear-gradient(
+      0deg, 
+      rgba(
+        ${
+          props.theme.colors.dynamic.minStart.r +
+          props.theme.colors.dynamic.rangeStart.r * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.minStart.g +
+          props.theme.colors.dynamic.rangeStart.g * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.minStart.b +
+          props.theme.colors.dynamic.rangeStart.b * props.$dynamicRatio
+        }, 
+        ${props.theme.colors.dynamic.minStart.a}
+        ) 
+        50%, 
+      rgba(
+        ${
+          props.theme.colors.dynamic.minEnd.r +
+          props.theme.colors.dynamic.rangeEnd.r * props.$dynamicRatio
+        },
+        ${
+          props.theme.colors.dynamic.minEnd.g +
+          props.theme.colors.dynamic.rangeEnd.g * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.minEnd.b +
+          props.theme.colors.dynamic.rangeEnd.b * props.$dynamicRatio
+        }, 
+        ${props.theme.colors.dynamic.minEnd.a}
+        ) 
+        100%
+      )
+    `};
 `
 
 const Home: NextPage = () => {
@@ -60,6 +91,7 @@ const Home: NextPage = () => {
     Array(FormData.optionGroups.length).fill(false)
   )
   const [isAnswered, setIsAnswered] = useState<boolean>(false)
+  const [dynamicRatio, setDynamicRatio] = useState<number>(0)
 
   const handleOption = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -70,13 +102,16 @@ const Home: NextPage = () => {
     temp[optionGroupId] = !!correct
 
     let check = true
+    let correctCount = 0
     for (let optionState of temp) {
       if (!optionState) {
         check = false
-        break
+      } else {
+        correctCount++
       }
     }
     setIsAnswered(check)
+    setDynamicRatio(correctCount / optionGroupsState.length)
     setOptionGroupsState(temp)
   }
 
@@ -92,7 +127,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <StyledContent>
+        <StyledContent $dynamicRatio={dynamicRatio}>
           <Form
             question={FormData.question}
             optionGroups={FormData.optionGroups}
