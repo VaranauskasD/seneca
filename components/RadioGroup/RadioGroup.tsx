@@ -8,6 +8,7 @@ interface RadioGroupProps {
   options: { option: string; correct?: boolean }[]
   handleOption: (optionGroupId: number, correct: boolean) => void
   dynamicRatio: number
+  isAnswered: boolean
 }
 
 const StyledRadioGroup = styled.div<{
@@ -44,7 +45,8 @@ const StyledRadioGroup = styled.div<{
   }
 
   :focus-within {
-    outline: 2px solid ${(props) => props.theme.colors.primary}};
+    outline: 2px solid ${(props) => props.theme.colors.primary};
+
     outline-offset: -2px;
   }
 `
@@ -72,6 +74,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
             handleOption={props.handleOption}
             dynamicRatio={props.dynamicRatio}
             groupQuantity={props.options.length - 1}
+            isAnswered={props.isAnswered}
           />
         ))}
       </StyledRadioGroup>

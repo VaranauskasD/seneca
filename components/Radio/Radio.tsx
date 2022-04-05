@@ -14,6 +14,7 @@ interface RadioProps {
   handleOption: (optionGroupId: number, correct: boolean) => void
   dynamicRatio: number
   groupQuantity: number
+  isAnswered: boolean
 }
 
 const StyledRadio = styled.div<{
@@ -100,12 +101,14 @@ const StyledInput = styled.input`
   pointer-events: none;
 `
 
-const StyledLabel = styled.label`
-  cursor: pointer;
-
-  :hover {
-    opacity: 0.8;
-  }
+const StyledLabel = styled.label<{ isAnswered: boolean }>`
+  ${(props) =>
+    props.isAnswered
+      ? `cursor: auto;`
+      : `cursor: pointer;
+        :hover {
+        opacity: 0.8;
+        }`}
 `
 
 export const Radio = (props: RadioProps) => {
@@ -124,7 +127,7 @@ export const Radio = (props: RadioProps) => {
         $dynamicRatio={props.dynamicRatio}
         $groupQuantity={props.groupQuantity}
       >
-        <StyledLabel>
+        <StyledLabel isAnswered={props.isAnswered}>
           <StyledInput
             id={`option-${props.optionGroupId}-${props.id}`}
             type="radio"
@@ -134,6 +137,7 @@ export const Radio = (props: RadioProps) => {
               props.handleCheck(props.id)
               props.handleOption(props.optionGroupId, props.correct)
             }}
+            disabled={props.isAnswered}
           />
           {props.label}
         </StyledLabel>

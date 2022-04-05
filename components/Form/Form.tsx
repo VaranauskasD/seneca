@@ -41,6 +41,7 @@ export const Form = (props: FormProps) => {
               options={optionGroup}
               handleOption={props.handleOption}
               dynamicRatio={props.dynamicRatio}
+              isAnswered={props.isAnswered}
             />
           </RadioWrapper>
         ))}

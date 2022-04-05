@@ -116,7 +116,7 @@ const Home: NextPage = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>Seneca </title>
+        <title>Seneca</title>
         <meta name="description" content="Seneca test app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
