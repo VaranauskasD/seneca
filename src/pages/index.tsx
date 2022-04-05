@@ -110,8 +110,11 @@ const Home: NextPage = () => {
     setOptionGroupsState(temp)
   }
 
-  // FormData.optionGroups.forEach((optionGroup) =>
-  //   randomiseOptions(optionGroup)
+  useEffect(() => {
+    FormData.optionGroups.forEach((optionGroup) =>
+      randomiseOptions(optionGroup)
+    )
+  }, [])
 
   return (
     <React.Fragment>
