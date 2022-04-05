@@ -42,6 +42,11 @@ const StyledRadioGroup = styled.div<{
     flex-direction: ${(props) => (props.$quantity > 2 ? 'column' : 'row')};
     border-radius: ${(props) => (props.$quantity > 2 ? '24px' : '100px')};
   }
+
+  :focus-within {
+    outline: 2px solid ${(props) => props.theme.colors.primary}};
+    outline-offset: -2px;
+  }
 `
 
 export const RadioGroup = (props: RadioGroupProps) => {
