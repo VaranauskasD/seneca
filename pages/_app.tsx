@@ -8,6 +8,7 @@ import { ViewportProvider } from '../providers'
 const theme = {
   colors: {
     primary: '#ffffff',
+    secondary: '#000000',
     dynamic: {
       text: {
         start: {

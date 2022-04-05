@@ -32,7 +32,6 @@ const StyledRadioGroup = styled.div<{ $quantity: number }>`
 
 export const RadioGroup = (props: RadioGroupProps) => {
   const [selectedRadio, setSelectedRadio] = useState<number>(0)
-  // console.log(selectedRadio)
 
   return (
     <React.Fragment>

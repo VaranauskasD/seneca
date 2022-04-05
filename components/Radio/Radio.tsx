@@ -23,25 +23,10 @@ const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
   padding: 20px 8px;
   color: ${(props) =>
     props.$selected
-      ? `rgba(
-        ${
-          props.theme.colors.dynamic.text.start.r +
-          props.theme.colors.dynamic.text.range.r * props.$dynamicRatio
-        }, 
-        ${
-          props.theme.colors.dynamic.text.start.g +
-          props.theme.colors.dynamic.text.range.g * props.$dynamicRatio
-        }, 
-        ${
-          props.theme.colors.dynamic.text.start.b +
-          props.theme.colors.dynamic.text.range.b * props.$dynamicRatio
-        }, 
-        ) `
+      ? `${props.theme.colors.secondary}`
       : `${props.theme.colors.primary}`};
-  /* color: black; */
-  background: ${(props) => {
-    if (props.$selected) console.log(props.$selected)
-    return props.$selected
+  background: ${(props) =>
+    props.$selected
       ? `rgb(
         ${
           props.theme.colors.dynamic.secondary.start.r +
@@ -54,10 +39,8 @@ const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
         ${
           props.theme.colors.dynamic.secondary.start.b +
           props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
-        }
-        )`
-      : 'transparent'
-  }};
+        })`
+      : 'transparent'};
   border: 2px solid transparent;
   border-color: ${(props) =>
     props.$selected
@@ -92,13 +75,17 @@ const StyledInput = styled.input`
   pointer-events: none;
 `
 
-const StyledLabel = styled.label``
+const StyledLabel = styled.label`
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.8;
+  }
+`
 
 export const Radio = (props: RadioProps) => {
-  const [isChecked, setIsChecked] = useState<boolean>(false)
-  if (isChecked) console.log(isChecked)
   return (
-    <StyledRadio $selected={isChecked} $dynamicRatio={props.dynamicRatio}>
+    <StyledRadio $selected={props.checked} $dynamicRatio={props.dynamicRatio}>
       <StyledLabel>
         <StyledInput
           id={`option-${props.optionGroupId}-${props.id}`}
