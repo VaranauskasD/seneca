@@ -110,7 +110,6 @@ const Home: NextPage = () => {
     }
     setIsAnswered(check)
     setDynamicRatio(correctCount / optionGroupsState.length)
-    console.log(dynamicRatio)
     setOptionGroupsState(temp)
   }
 

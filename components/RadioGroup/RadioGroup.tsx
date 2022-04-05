@@ -14,12 +14,29 @@ interface RadioGroupProps {
   dynamicRatio: number
 }
 
-const StyledRadioGroup = styled.div<{ $quantity: number }>`
+const StyledRadioGroup = styled.div<{
+  $quantity: number
+  $dynamicRatio: number
+}>`
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 2px solid #ffffff;
+  border: 2px solid
+    ${(props) =>
+      `rgb(
+        ${
+          props.theme.colors.dynamic.secondary.start.r +
+          props.theme.colors.dynamic.secondary.range.r * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.secondary.start.g +
+          props.theme.colors.dynamic.secondary.range.g * props.$dynamicRatio
+        }, 
+        ${
+          props.theme.colors.dynamic.secondary.start.b +
+          props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
+        })`};
   margin: 4px;
   text-align: center;
   text-decoration: none;
@@ -35,7 +52,10 @@ export const RadioGroup = (props: RadioGroupProps) => {
 
   return (
     <React.Fragment>
-      <StyledRadioGroup $quantity={props.options.length}>
+      <StyledRadioGroup
+        $quantity={props.options.length}
+        $dynamicRatio={props.dynamicRatio}
+      >
         {props.options.map((option, key) => {
           return (
             <Radio

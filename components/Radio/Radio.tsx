@@ -41,10 +41,10 @@ const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
           props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
         })`
       : 'transparent'};
-  border: 2px solid transparent;
-  border-color: ${(props) =>
-    props.$selected
-      ? `rgb(
+  border: 2px solid
+    ${(props) =>
+      props.$selected
+        ? `rgb(
         ${
           props.theme.colors.dynamic.secondary.start.r +
           props.theme.colors.dynamic.secondary.range.r * props.$dynamicRatio
@@ -56,9 +56,8 @@ const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
         ${
           props.theme.colors.dynamic.secondary.start.b +
           props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
-        }
-        )`
-      : 'transparent'};
+        })`
+        : 'transparent'};
   border-radius: 24px;
 
   @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
