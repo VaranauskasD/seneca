@@ -44,6 +44,7 @@ const StyledRadioGroup = styled.div<{
 
   @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
     flex-direction: ${(props) => (props.$quantity > 2 ? 'column' : 'row')};
+    border-radius: ${(props) => (props.$quantity > 2 ? '24px' : '100px')};
   }
 `
 
@@ -69,6 +70,7 @@ export const RadioGroup = (props: RadioGroupProps) => {
               handleCheck={setSelectedRadio}
               handleOption={props.handleOption}
               dynamicRatio={props.dynamicRatio}
+              groupQuantity={props.options.length - 1}
             />
           )
         })}

@@ -1,6 +1,7 @@
 import React, { useState, Dispatch, SetStateAction } from 'react'
 
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 interface RadioProps {
   id: number
@@ -16,9 +17,15 @@ interface RadioProps {
     correct: boolean
   ) => void
   dynamicRatio: number
+  groupQuantity: number
 }
 
-const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
+const StyledRadio = styled.div<{
+  $id: number
+  $selected: boolean
+  $dynamicRatio: number
+  $groupQuantity: number
+}>`
   min-width: 288px;
   padding: 20px 8px;
   color: ${(props) =>
@@ -58,15 +65,29 @@ const StyledRadio = styled.div<{ $selected: boolean; $dynamicRatio: number }>`
           props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
         })`
         : 'transparent'};
-  border-radius: 24px;
+  border-radius: ${(props) => {
+    if (props.$id === 0) {
+      return `20px 20px 0px 0px`
+    } else if (props.$id === props.$groupQuantity) {
+      return `0px 0px 20px 20px`
+    } else {
+      return `100px`
+    }
+  }};
 
   @media (min-width: ${(props) => `${props.theme.breakpoints.sm}px`}) {
+    border-radius: ${(props) => {
+      if (props.$groupQuantity < 2) return `100px`
+    }};
+
     min-width: 330px;
   }
   @media (min-width: ${(props) => `${props.theme.breakpoints.md}px`}) {
     min-width: 450px;
   }
 `
+
+const StyledRadioSelect = styled(motion.div)``
 
 const StyledInput = styled.input`
   position: fixed;
@@ -84,21 +105,29 @@ const StyledLabel = styled.label`
 
 export const Radio = (props: RadioProps) => {
   return (
-    <StyledRadio $selected={props.checked} $dynamicRatio={props.dynamicRatio}>
-      <StyledLabel>
-        <StyledInput
-          id={`option-${props.optionGroupId}-${props.id}`}
-          type="radio"
-          name={props.name}
-          checked={props.checked}
-          onChange={(event) => {
-            props.handleCheck(props.id)
-            props.handleOption(event, props.optionGroupId, props.correct)
-          }}
-        />
-        {props.label}
-      </StyledLabel>
-    </StyledRadio>
+    <React.Fragment>
+      <StyledRadio
+        $id={props.id}
+        $selected={props.checked}
+        $dynamicRatio={props.dynamicRatio}
+        $groupQuantity={props.groupQuantity}
+      >
+        <StyledLabel>
+          <StyledInput
+            id={`option-${props.optionGroupId}-${props.id}`}
+            type="radio"
+            name={props.name}
+            checked={props.checked}
+            onChange={(event) => {
+              props.handleCheck(props.id)
+              props.handleOption(event, props.optionGroupId, props.correct)
+            }}
+          />
+          {props.label}
+        </StyledLabel>
+      </StyledRadio>
+      <StyledRadioSelect />
+    </React.Fragment>
   )
 }
 

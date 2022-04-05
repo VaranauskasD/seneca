@@ -18,6 +18,7 @@ const FormData = {
     [{ option: 'Cellulose' }, { option: 'Mitochondria', correct: true }],
     [
       { option: 'Cellulose' },
+      { option: 'Ribosomes' },
       { option: 'Mitochondria', correct: true },
       { option: 'Chroloplast' },
     ],
