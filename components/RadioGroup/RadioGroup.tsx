@@ -57,23 +57,21 @@ export const RadioGroup = (props: RadioGroupProps) => {
         $quantity={props.options.length}
         $dynamicRatio={props.dynamicRatio}
       >
-        {props.options.map((option, key) => {
-          return (
-            <Radio
-              key={`option-${props.id}-${key}`}
-              id={key}
-              optionGroupId={props.id}
-              label={option.option}
-              name={`option-${props.id}`}
-              checked={key === selectedRadio}
-              correct={option.correct || false}
-              handleCheck={setSelectedRadio}
-              handleOption={props.handleOption}
-              dynamicRatio={props.dynamicRatio}
-              groupQuantity={props.options.length - 1}
-            />
-          )
-        })}
+        {props.options.map((option, key) => (
+          <Radio
+            key={`option-${props.id}-${key}`}
+            id={key}
+            optionGroupId={props.id}
+            label={option.option}
+            name={`option-${props.id}`}
+            checked={key === selectedRadio}
+            correct={option.correct || false}
+            handleCheck={setSelectedRadio}
+            handleOption={props.handleOption}
+            dynamicRatio={props.dynamicRatio}
+            groupQuantity={props.options.length - 1}
+          />
+        ))}
       </StyledRadioGroup>
     </React.Fragment>
   )

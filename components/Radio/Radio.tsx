@@ -1,7 +1,7 @@
 import React, { useState, Dispatch, SetStateAction } from 'react'
 
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 
 interface RadioProps {
   id: number
@@ -87,7 +87,16 @@ const StyledRadio = styled.div<{
   }
 `
 
-const StyledRadioSelect = styled(motion.div)``
+// Animations To Be Completed
+
+// const StyledRadioSelect = styled(motion.div)<{
+//   $selected: boolean
+//   $dynamicRatio: number
+// }>`
+//   position: relative;
+//   width: 100%;
+//   height: 100%;
+// `
 
 const StyledInput = styled.input`
   position: fixed;
@@ -125,8 +134,9 @@ export const Radio = (props: RadioProps) => {
           />
           {props.label}
         </StyledLabel>
+
+        {/* <StyledRadioSelect /> */}
       </StyledRadio>
-      <StyledRadioSelect />
     </React.Fragment>
   )
 }
