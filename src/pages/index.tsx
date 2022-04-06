@@ -4,41 +4,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { Form } from '../components'
-
-const FormData = {
-  question: 'An animal cell contains',
-  optionGroups: [
-    [{ option: 'Cell wall' }, { option: 'Ribosomes', correct: true }],
-    [{ option: 'Cytoplasm', correct: true }, { option: 'Chloroplast' }],
-    [
-      { option: 'Partially permeable membrane', correct: true },
-      { option: 'Impermeable membrane' },
-    ],
-    [{ option: 'Cellulose' }, { option: 'Mitochondria', correct: true }],
-    [
-      { option: 'Cellulose' },
-      { option: 'Mitochondria', correct: true },
-      { option: 'Chroloplast' },
-    ],
-  ],
-}
-
-const randomiseOptions = (options: { option: string; current?: boolean }[]) => {
-  // Fisher-Yates
-  for (
-    let currentIndex = options.length - 1;
-    currentIndex > 0;
-    currentIndex--
-  ) {
-    const randomIndex = Math.floor(Math.random() * (currentIndex + 1))
-
-    // swap
-    const temp = options[currentIndex]
-    options[currentIndex] = options[randomIndex]
-    options[randomIndex] = temp
-  }
-}
+import { Form, FormProps } from '../components'
 
 const StyledContent = styled.div<{ $dynamicRatio: number }>`
   display: flex;
@@ -84,9 +50,11 @@ const StyledContent = styled.div<{ $dynamicRatio: number }>`
     `};
 `
 
-const Home: NextPage = () => {
+const Home: NextPage<{ formData: FormProps }> = (props: {
+  formData: FormProps
+}) => {
   const [optionGroupsState, setOptionGroupsState] = useState<boolean[]>(
-    Array(FormData.optionGroups.length).fill(false)
+    Array(props.formData.optionGroups.length).fill(false)
   )
   const [isAnswered, setIsAnswered] = useState<boolean>(false)
   const [dynamicRatio, setDynamicRatio] = useState<number>(0)
@@ -109,11 +77,7 @@ const Home: NextPage = () => {
     setOptionGroupsState(temp)
   }
 
-  useEffect(() => {
-    FormData.optionGroups.forEach((optionGroup) =>
-      randomiseOptions(optionGroup)
-    )
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <React.Fragment>
@@ -126,8 +90,8 @@ const Home: NextPage = () => {
       <main>
         <StyledContent $dynamicRatio={dynamicRatio}>
           <Form
-            question={FormData.question}
-            optionGroups={FormData.optionGroups}
+            question={props.formData.question}
+            optionGroups={props.formData.optionGroups}
             handleOption={handleOption}
             isAnswered={isAnswered}
             dynamicRatio={dynamicRatio}
@@ -136,6 +100,50 @@ const Home: NextPage = () => {
       </main>
     </React.Fragment>
   )
+}
+
+Home.getInitialProps = async () => {
+  const formData = {
+    question: 'An animal cell contains',
+    optionGroups: [
+      [{ option: 'Cell wall' }, { option: 'Ribosomes', correct: true }],
+      [{ option: 'Cytoplasm', correct: true }, { option: 'Chloroplast' }],
+      [
+        { option: 'Partially permeable membrane', correct: true },
+        { option: 'Impermeable membrane' },
+      ],
+      [{ option: 'Cellulose' }, { option: 'Mitochondria', correct: true }],
+      [
+        { option: 'Cellulose' },
+        { option: 'Mitochondria', correct: true },
+        { option: 'Chroloplast' },
+      ],
+    ],
+    handleOption: () => {},
+    isAnswered: false,
+    dynamicRatio: 0,
+  }
+
+  const randomiseOptions = (
+    options: { option: string; current?: boolean }[]
+  ) => {
+    // Fisher-Yates
+    for (
+      let currentIndex = options.length - 1;
+      currentIndex > 0;
+      currentIndex--
+    ) {
+      const randomIndex = Math.floor(Math.random() * (currentIndex + 1))
+
+      // swap
+      const temp = options[currentIndex]
+      options[currentIndex] = options[randomIndex]
+      options[randomIndex] = temp
+    }
+  }
+
+  formData.optionGroups.forEach((optionGroup) => randomiseOptions(optionGroup))
+  return { formData }
 }
 
 export default Home

@@ -3,7 +3,7 @@
 exports[`RadioGroup renders correctly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-hKMtZM hVmtlr"
+    class="sc-hKMtZM fRXuCA"
   >
     <div
       class="sc-bczRLJ fNFKHi"
@@ -43,7 +43,7 @@ exports[`RadioGroup renders correctly 1`] = `
 exports[`RadioGroup renders correctly with three radio options 1`] = `
 <DocumentFragment>
   <div
-    class="sc-hKMtZM efbTlQ"
+    class="sc-hKMtZM efHAkz"
   >
     <div
       class="sc-bczRLJ bDYwXX"

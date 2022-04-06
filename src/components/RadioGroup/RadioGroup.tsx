@@ -34,7 +34,7 @@ const StyledRadioGroup = styled.div<{
           props.theme.colors.dynamic.secondary.start.b +
           props.theme.colors.dynamic.secondary.range.b * props.$dynamicRatio
         })`};
-  margin: 4px;
+  margin: 12px;
   text-align: center;
   text-decoration: none;
   border-radius: 24px;

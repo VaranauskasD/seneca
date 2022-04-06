@@ -6,7 +6,7 @@ exports[`Form renders correctly 1`] = `
     class="sc-gKXOVf eUHymF"
   >
     <h1
-      class="sc-eCYdqJ gDmCUp"
+      class="sc-eCYdqJ fAZKGE"
     >
       An animal cell contains
     </h1>
@@ -14,7 +14,7 @@ exports[`Form renders correctly 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -53,7 +53,7 @@ exports[`Form renders correctly 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -92,7 +92,7 @@ exports[`Form renders correctly 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -131,7 +131,7 @@ exports[`Form renders correctly 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -170,7 +170,7 @@ exports[`Form renders correctly 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM efbTlQ"
+        class="sc-hKMtZM efHAkz"
       >
         <div
           class="sc-bczRLJ bDYwXX"
@@ -237,7 +237,7 @@ exports[`Form renders correctly 1`] = `
     </div>
   </form>
   <h2
-    class="sc-jSMfEi cGXJtn"
+    class="sc-jSMfEi kTCAsy"
   >
     The answer is incorrect
   </h2>
@@ -250,7 +250,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
     class="sc-gKXOVf eUHymF"
   >
     <h1
-      class="sc-eCYdqJ gDmCUp"
+      class="sc-eCYdqJ fAZKGE"
     >
       An animal cell contains
     </h1>
@@ -258,7 +258,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -299,7 +299,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -340,7 +340,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -381,7 +381,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM hVmtlr"
+        class="sc-hKMtZM fRXuCA"
       >
         <div
           class="sc-bczRLJ fNFKHi"
@@ -422,7 +422,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
       class="sc-iBkjds"
     >
       <div
-        class="sc-hKMtZM efbTlQ"
+        class="sc-hKMtZM efHAkz"
       >
         <div
           class="sc-bczRLJ bDYwXX"
@@ -493,7 +493,7 @@ exports[`Form renders correctly when answer is reached 1`] = `
     </div>
   </form>
   <h2
-    class="sc-jSMfEi cGXJtn"
+    class="sc-jSMfEi kTCAsy"
   >
     The answer is correct
   </h2>

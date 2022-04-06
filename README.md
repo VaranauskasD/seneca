@@ -18,8 +18,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Assumptions and Limitations
 
-- Assumed the data is ready and available, thus chose to opt in for a hard-coded array on the front-end with the set structure, instead of using something like apollo client resolvers for mocking data in dev mode.
-- Assumed liberties on unclarified or ambiguous designs, such as:
+- Assumed the data is ready and available. Considered using mock resolvers via apollo client, but opted for a hard-coded array on the front-end to reduce complexity.
+- Made assumptions on unclarified or ambiguous designs, such as:
 
   - Three toggle positions - if the number of toggles is above 2, opted in for a column design. Currently, supporting unlimited number of toggles.
   - Small layouts - opted in for column design for toggle layouts below the small breakpoint (330px width)

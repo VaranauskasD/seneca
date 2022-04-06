@@ -13,10 +13,12 @@ export interface FormProps {
 
 const StyledQuestion = styled.h1`
   color: ${(props) => `${props.theme.colors.primary}`};
+  margin: 40px;
 `
 
 const StyledAnswer = styled.h2`
   color: ${(props) => `${props.theme.colors.primary}`};
+  margin: 40px;
 `
 
 const StyledForm = styled.form`
