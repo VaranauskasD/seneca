@@ -9,7 +9,7 @@ import { Form } from '../components'
 const FormData = {
   question: 'An animal cell contains',
   optionGroups: [
-    [{ option: 'Cell wall', correct: true }, { option: 'Ribosomes' }],
+    [{ option: 'Cell wall' }, { option: 'Ribosomes', correct: true }],
     [{ option: 'Cytoplasm', correct: true }, { option: 'Chloroplast' }],
     [
       { option: 'Partially permeable membrane', correct: true },
@@ -18,7 +18,6 @@ const FormData = {
     [{ option: 'Cellulose' }, { option: 'Mitochondria', correct: true }],
     [
       { option: 'Cellulose' },
-      { option: 'Ribosomes' },
       { option: 'Mitochondria', correct: true },
       { option: 'Chroloplast' },
     ],
@@ -120,7 +119,7 @@ const Home: NextPage = () => {
     <React.Fragment>
       <Head>
         <title>Seneca</title>
-        <meta name="description" content="Seneca test app" />
+        <meta name="description" content="Seneca questionnaire app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

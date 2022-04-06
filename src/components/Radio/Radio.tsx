@@ -120,31 +120,29 @@ export const Radio = (props: RadioProps) => {
   }, [])
 
   return (
-    <React.Fragment>
-      <StyledRadio
-        $id={props.id}
-        $selected={props.checked}
-        $dynamicRatio={props.dynamicRatio}
-        $groupQuantity={props.groupQuantity}
-      >
-        <StyledLabel isAnswered={props.isAnswered}>
-          <StyledInput
-            id={`option-${props.optionGroupId}-${props.id}`}
-            type="radio"
-            name={props.name}
-            checked={props.checked}
-            onChange={(event) => {
-              props.handleCheck(props.id)
-              props.handleOption(props.optionGroupId, props.correct)
-            }}
-            disabled={props.isAnswered}
-          />
-          {props.label}
-        </StyledLabel>
+    <StyledRadio
+      $id={props.id}
+      $selected={props.checked}
+      $dynamicRatio={props.dynamicRatio}
+      $groupQuantity={props.groupQuantity}
+    >
+      <StyledLabel isAnswered={props.isAnswered}>
+        <StyledInput
+          id={`option-${props.optionGroupId}-${props.id}`}
+          type="radio"
+          name={props.name}
+          checked={props.checked}
+          onChange={(event) => {
+            props.handleCheck(props.id)
+            props.handleOption(props.optionGroupId, props.correct)
+          }}
+          disabled={props.isAnswered}
+        />
+        {props.label}
+      </StyledLabel>
 
-        {/* <StyledRadioSelect /> */}
-      </StyledRadio>
-    </React.Fragment>
+      {/* <StyledRadioSelect /> */}
+    </StyledRadio>
   )
 }
 

@@ -52,33 +52,30 @@ const StyledRadioGroup = styled.div<{
 `
 
 export const RadioGroup = (props: RadioGroupProps) => {
-  // const random = Math.floor(Math.random() * props.options.length)
   const [selectedRadio, setSelectedRadio] = useState<number>(0)
 
   return (
-    <React.Fragment>
-      <StyledRadioGroup
-        $quantity={props.options.length}
-        $dynamicRatio={props.dynamicRatio}
-      >
-        {props.options.map((option, key) => (
-          <Radio
-            key={`option-${props.id}-${key}`}
-            id={key}
-            optionGroupId={props.id}
-            label={option.option}
-            name={`option-${props.id}`}
-            checked={key === selectedRadio}
-            correct={option.correct || false}
-            handleCheck={setSelectedRadio}
-            handleOption={props.handleOption}
-            dynamicRatio={props.dynamicRatio}
-            groupQuantity={props.options.length - 1}
-            isAnswered={props.isAnswered}
-          />
-        ))}
-      </StyledRadioGroup>
-    </React.Fragment>
+    <StyledRadioGroup
+      $quantity={props.options.length}
+      $dynamicRatio={props.dynamicRatio}
+    >
+      {props.options.map((option, key) => (
+        <Radio
+          key={`option-${props.id}-${key}`}
+          id={key}
+          optionGroupId={props.id}
+          label={option.option}
+          name={`option-${props.id}`}
+          checked={key === selectedRadio}
+          correct={option.correct || false}
+          handleCheck={setSelectedRadio}
+          handleOption={props.handleOption}
+          dynamicRatio={props.dynamicRatio}
+          groupQuantity={props.options.length - 1}
+          isAnswered={props.isAnswered}
+        />
+      ))}
+    </StyledRadioGroup>
   )
 }
 
