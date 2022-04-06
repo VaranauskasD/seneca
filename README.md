@@ -30,4 +30,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - Opted out of creating animations - attempted to use framer-motion to create animations as per the assignment video, however chose to limit the app to the current functionality as different layouts increased the animation complexity.
 
-Preferably, all the described considerations would be brought to a design team to further elaborate and agree on an appropriate design.
+Preferably, all the described considerations would be brought to a design team for further discussion.
